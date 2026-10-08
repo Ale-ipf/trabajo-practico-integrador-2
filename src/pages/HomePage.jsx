@@ -1,5 +1,6 @@
 import { useFetch } from "../hooks/useFetch";
 import { useOutletContext } from "react-router";
+import { Link } from "react-router";
 import { Inicio } from "../components/Inicio";
 import { API_BASE_URL } from "../config/api";
 
@@ -7,7 +8,7 @@ export const HomePage = () => {
   const { profile, profileLoading, profileError } = useOutletContext();
   const { data, isLoading, error } = useFetch(`${API_BASE_URL}/articles`);
 
-  const articles = data?.articulos || [];
+  const articles = data?.articles || data?.articulos || [];
 
   return (
     <div>
@@ -38,20 +39,26 @@ export const HomePage = () => {
           {!isLoading &&
             !error &&
             articles.map((article) => (
-              <article key={article.id} className="border p-4 rounded bg-white">
-                <h2 className="font-bold text-xl mb-1">{article.title}</h2>
-                <p className="text-sm text-gray-500 italic mb-2">
+              <article
+                key={article.id}
+                className="rounded border border-gray-700 bg-gray-900 p-4 text-gray-100"
+              >
+                <h2 className="mb-1 text-xl font-bold text-white">
+                  {article.title}
+                </h2>
+                <p className="mb-2 text-sm italic text-gray-300">
                   Resumen: {article.excerpt}
                 </p>
 
-                {/* Aquí agregamos el contenido completo del artículo */}
-                <div className="text-gray-800 my-3 whitespace-pre-wrap border-t pt-2">
-                  {article.content}
-                </div>
-
-                <span className="bg-gray-200 text-xs px-2 py-1 inline-block mt-2">
+                <span className="mt-2 inline-block bg-gray-800 px-2 py-1 text-xs text-gray-200">
                   Autor: {article.author?.username || "Anónimo"}
                 </span>
+                <Link
+                  to={`/articles/${article.id}`}
+                  className="mt-3 inline-block font-medium text-blue-300 underline underline-offset-4 hover:text-blue-200"
+                >
+                  Leer artículo
+                </Link>
               </article>
             ))}
         </div>

@@ -14,6 +14,7 @@ import { API_BASE_URL } from "../config/api";
 import { LoginPage } from "../pages/LoginPage";
 import { RegisterPage } from "../pages/RegisterPage";
 import { HomePage } from "../pages/HomePage";
+import { ArticleDetailPage } from "../pages/ArticleDetailPage";
 import { PublicRoutes } from "./PublicRoutes";
 import { PrivateRoutes } from "./PrivateRoutes";
 
@@ -107,6 +108,7 @@ export const AppRouter = () => {
 
           <Route element={<PrivateRoutes />}>
             <Route path="/home" element={<HomePage />} />
+            <Route path="/articles/:id" element={<ArticleDetailPage />} />
           </Route>
         </Route>
       </Routes>
