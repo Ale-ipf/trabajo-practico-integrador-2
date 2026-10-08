@@ -1,6 +1,6 @@
 # Trabajo Práctico Integrador 2
 
-Aplicación web desarrollada con React y Vite. Permite registrarse e iniciar sesión, y consultar los artículos publicados.
+Aplicación web desarrollada con React y Vite. Permite registrarse e iniciar sesión, consultar los resúmenes de los artículos publicados y abrir cada artículo para leer su contenido completo.
 
 ## Requisitos
 
